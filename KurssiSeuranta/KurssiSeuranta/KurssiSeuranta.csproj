@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -53,6 +59,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,9 +151,40 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KurssitController.cs" />
+    <Compile Include="Controllers\LasnaolotietoController.cs" />
+    <Compile Include="Controllers\OpettajatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Kurssi.cs">
+      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KurssiTietokanta.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KurssiTietokanta.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KurssiTietokanta.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KurssiTietokanta.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lasnaolotiedot.cs">
+      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Opettaja.cs">
+      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Opiskelija.cs">
+      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OpiskelijasController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,10 +194,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\KurssiTietokanta.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>KurssiTietokanta.Context.cs</LastGenOutput>
+      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\KurssiTietokanta.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
+      <LastGenOutput>KurssiTietokanta.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\KurssiTietokanta.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KurssiTietokanta.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\KurssiTietokanta.edmx.diagram">
+      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -185,10 +241,29 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Opiskelijas\Create.cshtml" />
+    <Content Include="Views\Opiskelijas\Delete.cshtml" />
+    <Content Include="Views\Opiskelijas\Details.cshtml" />
+    <Content Include="Views\Opiskelijas\Edit.cshtml" />
+    <Content Include="Views\Opiskelijas\Index.cshtml" />
+    <Content Include="Views\Opettajat\Create.cshtml" />
+    <Content Include="Views\Opettajat\Delete.cshtml" />
+    <Content Include="Views\Opettajat\Details.cshtml" />
+    <Content Include="Views\Opettajat\Edit.cshtml" />
+    <Content Include="Views\Opettajat\Index.cshtml" />
+    <Content Include="Views\Lasnaolotieto\Create.cshtml" />
+    <Content Include="Views\Lasnaolotieto\Delete.cshtml" />
+    <Content Include="Views\Lasnaolotieto\Details.cshtml" />
+    <Content Include="Views\Lasnaolotieto\Edit.cshtml" />
+    <Content Include="Views\Lasnaolotieto\Index.cshtml" />
+    <Content Include="Views\Kurssit\Create.cshtml" />
+    <Content Include="Views\Kurssit\Delete.cshtml" />
+    <Content Include="Views\Kurssit\Details.cshtml" />
+    <Content Include="Views\Kurssit\Edit.cshtml" />
+    <Content Include="Views\Kurssit\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -202,6 +277,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

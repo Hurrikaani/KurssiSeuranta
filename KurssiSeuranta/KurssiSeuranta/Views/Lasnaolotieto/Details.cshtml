@@ -1,0 +1,50 @@
+﻿@model KurssiSeuranta.Models.Lasnaolotiedot
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lasnaolotiedot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kirjautuminen_sisaan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kirjautuminen_sisaan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kirjautuminen_ulos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Luokkanumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Luokkanumero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opettaja.Etunimi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RekisteriID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

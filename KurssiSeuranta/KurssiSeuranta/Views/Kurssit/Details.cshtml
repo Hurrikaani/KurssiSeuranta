@@ -1,0 +1,58 @@
+﻿@model KurssiSeuranta.Models.Kurssi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kurssi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssinimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssinimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kurssikoodi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssikoodi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Luokka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Luokka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opiskelija.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lasnaolotiedot.RekisteriID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lasnaolotiedot.RekisteriID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KurssiID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<KurssiSeuranta.Models.Lasnaolotiedot>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kirjautuminen_sisaan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Luokkanumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kirjautuminen_sisaan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kirjautuminen_ulos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Luokkanumero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opettaja.Etunimi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RekisteriID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RekisteriID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RekisteriID })
+        </td>
+    </tr>
+}
+
+</table>
