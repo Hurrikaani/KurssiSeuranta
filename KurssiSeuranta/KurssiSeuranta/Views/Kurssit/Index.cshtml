@@ -17,15 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Kurssikoodi)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Luokka)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lasnaolotiedot.RekisteriID)
-        </th>
         <th></th>
     </tr>
 
@@ -36,15 +27,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Kurssikoodi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Luokka)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Opiskelija.Etunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lasnaolotiedot.RekisteriID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.KurssiID }) |

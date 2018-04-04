@@ -13,10 +13,10 @@ namespace KurssiSeuranta.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OpiskelijarekisteriEntities : DbContext
+    public partial class KurssiRekisteriEntities : DbContext
     {
-        public OpiskelijarekisteriEntities()
-            : base("name=OpiskelijarekisteriEntities")
+        public KurssiRekisteriEntities()
+            : base("name=KurssiRekisteriEntities")
         {
         }
     
@@ -26,8 +26,9 @@ namespace KurssiSeuranta.Models
         }
     
         public virtual DbSet<Kurssi> Kurssi { get; set; }
-        public virtual DbSet<Lasnaolotiedot> Lasnaolotiedot { get; set; }
+        public virtual DbSet<Läsnäolotiedot> Läsnäolotiedot { get; set; }
         public virtual DbSet<Opettaja> Opettaja { get; set; }
+        public virtual DbSet<OpetusTila> OpetusTila { get; set; }
         public virtual DbSet<Opiskelija> Opiskelija { get; set; }
     }
 }

@@ -12,22 +12,19 @@ namespace KurssiSeuranta.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Lasnaolotiedot
+    public partial class OpetusTila
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Lasnaolotiedot()
+        public OpetusTila()
         {
-            this.Kurssi = new HashSet<Kurssi>();
+            this.Läsnäolotiedot = new HashSet<Läsnäolotiedot>();
         }
     
-        public Nullable<System.DateTime> Kirjautuminen_sisaan { get; set; }
-        public Nullable<System.DateTime> Kirjautuminen_ulos { get; set; }
-        public Nullable<int> Luokkanumero { get; set; }
-        public Nullable<int> OpettajaID { get; set; }
-        public int RekisteriID { get; set; }
+        public int LuokkaID { get; set; }
+        public string LuokanNimi { get; set; }
+        public string LuokkaKoodi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kurssi> Kurssi { get; set; }
-        public virtual Opettaja Opettaja { get; set; }
+        public virtual ICollection<Läsnäolotiedot> Läsnäolotiedot { get; set; }
     }
 }

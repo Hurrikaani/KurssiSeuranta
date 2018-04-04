@@ -1,4 +1,4 @@
-﻿@model KurssiSeuranta.Models.Kurssi
+﻿@model KurssiSeuranta.Models.OpetusTila
 
 @{
     ViewBag.Title = "Delete";
@@ -8,23 +8,23 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Kurssi</h4>
+    <h4>OpetusTila</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Kurssinimi)
+            @Html.DisplayNameFor(model => model.LuokanNimi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kurssinimi)
+            @Html.DisplayFor(model => model.LuokanNimi)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Kurssikoodi)
+            @Html.DisplayNameFor(model => model.LuokkaKoodi)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kurssikoodi)
+            @Html.DisplayFor(model => model.LuokkaKoodi)
         </dd>
 
     </dl>

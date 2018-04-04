@@ -12,7 +12,7 @@ namespace KurssiSeuranta.Controllers
 {
     public class OpettajatController : Controller
     {
-        private OpiskelijarekisteriEntities db = new OpiskelijarekisteriEntities();
+        private KurssiRekisteriEntities db = new KurssiRekisteriEntities();
 
         // GET: Opettajat
         public ActionResult Index()

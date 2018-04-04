@@ -152,39 +152,43 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KurssitController.cs" />
-    <Compile Include="Controllers\LasnaolotietoController.cs" />
+    <Compile Include="Controllers\LäsnäolotietoController.cs" />
     <Compile Include="Controllers\OpettajatController.cs" />
+    <Compile Include="Controllers\OpetusTilatController.cs" />
+    <Compile Include="Controllers\OpiskelijatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Kurssi.cs">
-      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+      <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KurssiTietokanta.Context.cs">
+    <Compile Include="Models\KurssiKanta.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KurssiTietokanta.Context.tt</DependentUpon>
+      <DependentUpon>KurssiKanta.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KurssiTietokanta.cs">
+    <Compile Include="Models\KurssiKanta.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+      <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KurssiTietokanta.Designer.cs">
+    <Compile Include="Models\KurssiKanta.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
+      <DependentUpon>KurssiKanta.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Lasnaolotiedot.cs">
-      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+    <Compile Include="Models\Läsnäolotiedot.cs">
+      <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Opettaja.cs">
-      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+      <DependentUpon>KurssiKanta.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpetusTila.cs">
+      <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Opiskelija.cs">
-      <DependentUpon>KurssiTietokanta.tt</DependentUpon>
+      <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\OpiskelijasController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,27 +198,28 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\KurssiTietokanta.Context.tt">
+    <Content Include="Models\KurssiKanta.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KurssiTietokanta.Context.cs</LastGenOutput>
-      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
+      <DependentUpon>KurssiKanta.edmx</DependentUpon>
+      <LastGenOutput>KurssiKanta.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\KurssiTietokanta.tt">
+    <Content Include="Models\KurssiKanta.edmx.sql" />
+    <Content Include="Models\KurssiKanta.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
-      <LastGenOutput>KurssiTietokanta.cs</LastGenOutput>
+      <DependentUpon>KurssiKanta.edmx</DependentUpon>
+      <LastGenOutput>KurssiKanta.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\KurssiTietokanta.edmx">
+    <EntityDeploy Include="Models\KurssiKanta.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KurssiTietokanta.Designer.cs</LastGenOutput>
+      <LastGenOutput>KurssiKanta.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\KurssiTietokanta.edmx.diagram">
-      <DependentUpon>KurssiTietokanta.edmx</DependentUpon>
+    <Content Include="Models\KurssiKanta.edmx.diagram">
+      <DependentUpon>KurssiKanta.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -241,21 +246,26 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Opiskelijas\Create.cshtml" />
-    <Content Include="Views\Opiskelijas\Delete.cshtml" />
-    <Content Include="Views\Opiskelijas\Details.cshtml" />
-    <Content Include="Views\Opiskelijas\Edit.cshtml" />
-    <Content Include="Views\Opiskelijas\Index.cshtml" />
+    <Content Include="Views\OpetusTilat\Create.cshtml" />
+    <Content Include="Views\OpetusTilat\Delete.cshtml" />
+    <Content Include="Views\OpetusTilat\Details.cshtml" />
+    <Content Include="Views\OpetusTilat\Edit.cshtml" />
+    <Content Include="Views\OpetusTilat\Index.cshtml" />
+    <Content Include="Views\Opiskelijat\Create.cshtml" />
+    <Content Include="Views\Opiskelijat\Delete.cshtml" />
+    <Content Include="Views\Opiskelijat\Details.cshtml" />
+    <Content Include="Views\Opiskelijat\Edit.cshtml" />
+    <Content Include="Views\Opiskelijat\Index.cshtml" />
     <Content Include="Views\Opettajat\Create.cshtml" />
     <Content Include="Views\Opettajat\Delete.cshtml" />
     <Content Include="Views\Opettajat\Details.cshtml" />
     <Content Include="Views\Opettajat\Edit.cshtml" />
     <Content Include="Views\Opettajat\Index.cshtml" />
-    <Content Include="Views\Lasnaolotieto\Create.cshtml" />
-    <Content Include="Views\Lasnaolotieto\Delete.cshtml" />
-    <Content Include="Views\Lasnaolotieto\Details.cshtml" />
-    <Content Include="Views\Lasnaolotieto\Edit.cshtml" />
-    <Content Include="Views\Lasnaolotieto\Index.cshtml" />
+    <Content Include="Views\Läsnäolotieto\Create.cshtml" />
+    <Content Include="Views\Läsnäolotieto\Delete.cshtml" />
+    <Content Include="Views\Läsnäolotieto\Details.cshtml" />
+    <Content Include="Views\Läsnäolotieto\Edit.cshtml" />
+    <Content Include="Views\Läsnäolotieto\Index.cshtml" />
     <Content Include="Views\Kurssit\Create.cshtml" />
     <Content Include="Views\Kurssit\Delete.cshtml" />
     <Content Include="Views\Kurssit\Details.cshtml" />

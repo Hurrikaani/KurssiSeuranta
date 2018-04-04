@@ -6,20 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using KurssiSeuranta.Models;
 
-namespace KurssiSeuranta.Models
+namespace KurssiSeuranta.Controllers
 {
-    public class OpiskelijasController : Controller
+    public class OpiskelijatController : Controller
     {
-        private OpiskelijarekisteriEntities db = new OpiskelijarekisteriEntities();
+        private KurssiRekisteriEntities db = new KurssiRekisteriEntities();
 
-        // GET: Opiskelijas
+        // GET: Opiskelijat
         public ActionResult Index()
         {
             return View(db.Opiskelija.ToList());
         }
 
-        // GET: Opiskelijas/Details/5
+        // GET: Opiskelijat/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,13 +35,13 @@ namespace KurssiSeuranta.Models
             return View(opiskelija);
         }
 
-        // GET: Opiskelijas/Create
+        // GET: Opiskelijat/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Opiskelijas/Create
+        // POST: Opiskelijat/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -57,7 +58,7 @@ namespace KurssiSeuranta.Models
             return View(opiskelija);
         }
 
-        // GET: Opiskelijas/Edit/5
+        // GET: Opiskelijat/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -72,7 +73,7 @@ namespace KurssiSeuranta.Models
             return View(opiskelija);
         }
 
-        // POST: Opiskelijas/Edit/5
+        // POST: Opiskelijat/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -88,7 +89,7 @@ namespace KurssiSeuranta.Models
             return View(opiskelija);
         }
 
-        // GET: Opiskelijas/Delete/5
+        // GET: Opiskelijat/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -103,7 +104,7 @@ namespace KurssiSeuranta.Models
             return View(opiskelija);
         }
 
-        // POST: Opiskelijas/Delete/5
+        // POST: Opiskelijat/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

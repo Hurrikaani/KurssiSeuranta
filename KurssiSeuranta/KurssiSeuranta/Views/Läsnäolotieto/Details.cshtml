@@ -1,4 +1,4 @@
-﻿@model KurssiSeuranta.Models.Lasnaolotiedot
+﻿@model KurssiSeuranta.Models.Läsnäolotiedot
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Lasnaolotiedot</h4>
+    <h4>Läsnäolotiedot</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_sisaan)
+            @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kirjautuminen_sisaan)
+            @Html.DisplayFor(model => model.Kirjautuminen_sisään)
         </dd>
 
         <dt>
@@ -35,11 +35,35 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Kurssi.Kurssinimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kurssi.Kurssinimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpetusTila.LuokanNimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpetusTila.LuokanNimi)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Opettaja.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opiskelija.Etunimi)
         </dd>
 
     </dl>

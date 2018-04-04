@@ -14,14 +14,17 @@ namespace KurssiSeuranta.Models
     
     public partial class Kurssi
     {
-        public string Kurssinimi { get; set; }
-        public Nullable<int> Kurssikoodi { get; set; }
-        public string Luokka { get; set; }
-        public int KurssiID { get; set; }
-        public Nullable<int> RekisteriID { get; set; }
-        public Nullable<int> OpiskelijaID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kurssi()
+        {
+            this.Läsnäolotiedot = new HashSet<Läsnäolotiedot>();
+        }
     
-        public virtual Opiskelija Opiskelija { get; set; }
-        public virtual Lasnaolotiedot Lasnaolotiedot { get; set; }
+        public string Kurssinimi { get; set; }
+        public string Kurssikoodi { get; set; }
+        public int KurssiID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Läsnäolotiedot> Läsnäolotiedot { get; set; }
     }
 }

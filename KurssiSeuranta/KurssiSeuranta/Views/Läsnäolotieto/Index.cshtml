@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KurssiSeuranta.Models.Lasnaolotiedot>
+﻿@model IEnumerable<KurssiSeuranta.Models.Läsnäolotiedot>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_sisaan)
+            @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
@@ -21,7 +21,16 @@
             @Html.DisplayNameFor(model => model.Luokkanumero)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Kurssi.Kurssinimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpetusTila.LuokanNimi)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
         </th>
         <th></th>
     </tr>
@@ -29,7 +38,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Kirjautuminen_sisaan)
+            @Html.DisplayFor(modelItem => item.Kirjautuminen_sisään)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Kirjautuminen_ulos)
@@ -38,7 +47,16 @@
             @Html.DisplayFor(modelItem => item.Luokkanumero)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Kurssi.Kurssinimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpetusTila.LuokanNimi)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Opettaja.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opiskelija.Etunimi)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RekisteriID }) |

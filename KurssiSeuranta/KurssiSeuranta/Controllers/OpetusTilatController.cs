@@ -10,112 +10,107 @@ using KurssiSeuranta.Models;
 
 namespace KurssiSeuranta.Controllers
 {
-    public class LasnaolotietoController : Controller
+    public class OpetusTilatController : Controller
     {
-        private OpiskelijarekisteriEntities db = new OpiskelijarekisteriEntities();
+        private KurssiRekisteriEntities db = new KurssiRekisteriEntities();
 
-        // GET: Lasnaolotieto
+        // GET: OpetusTilat
         public ActionResult Index()
         {
-            var lasnaolotiedot = db.Lasnaolotiedot.Include(l => l.Opettaja);
-            return View(lasnaolotiedot.ToList());
+            return View(db.OpetusTila.ToList());
         }
 
-        // GET: Lasnaolotieto/Details/5
+        // GET: OpetusTilat/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lasnaolotiedot lasnaolotiedot = db.Lasnaolotiedot.Find(id);
-            if (lasnaolotiedot == null)
+            OpetusTila opetusTila = db.OpetusTila.Find(id);
+            if (opetusTila == null)
             {
                 return HttpNotFound();
             }
-            return View(lasnaolotiedot);
+            return View(opetusTila);
         }
 
-        // GET: Lasnaolotieto/Create
+        // GET: OpetusTilat/Create
         public ActionResult Create()
         {
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi");
             return View();
         }
 
-        // POST: Lasnaolotieto/Create
+        // POST: OpetusTilat/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Kirjautuminen_sisaan,Kirjautuminen_ulos,Luokkanumero,OpettajaID,RekisteriID")] Lasnaolotiedot lasnaolotiedot)
+        public ActionResult Create([Bind(Include = "LuokkaID,LuokanNimi,LuokkaKoodi")] OpetusTila opetusTila)
         {
             if (ModelState.IsValid)
             {
-                db.Lasnaolotiedot.Add(lasnaolotiedot);
+                db.OpetusTila.Add(opetusTila);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", lasnaolotiedot.OpettajaID);
-            return View(lasnaolotiedot);
+            return View(opetusTila);
         }
 
-        // GET: Lasnaolotieto/Edit/5
+        // GET: OpetusTilat/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lasnaolotiedot lasnaolotiedot = db.Lasnaolotiedot.Find(id);
-            if (lasnaolotiedot == null)
+            OpetusTila opetusTila = db.OpetusTila.Find(id);
+            if (opetusTila == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", lasnaolotiedot.OpettajaID);
-            return View(lasnaolotiedot);
+            return View(opetusTila);
         }
 
-        // POST: Lasnaolotieto/Edit/5
+        // POST: OpetusTilat/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Kirjautuminen_sisaan,Kirjautuminen_ulos,Luokkanumero,OpettajaID,RekisteriID")] Lasnaolotiedot lasnaolotiedot)
+        public ActionResult Edit([Bind(Include = "LuokkaID,LuokanNimi,LuokkaKoodi")] OpetusTila opetusTila)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(lasnaolotiedot).State = EntityState.Modified;
+                db.Entry(opetusTila).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", lasnaolotiedot.OpettajaID);
-            return View(lasnaolotiedot);
+            return View(opetusTila);
         }
 
-        // GET: Lasnaolotieto/Delete/5
+        // GET: OpetusTilat/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lasnaolotiedot lasnaolotiedot = db.Lasnaolotiedot.Find(id);
-            if (lasnaolotiedot == null)
+            OpetusTila opetusTila = db.OpetusTila.Find(id);
+            if (opetusTila == null)
             {
                 return HttpNotFound();
             }
-            return View(lasnaolotiedot);
+            return View(opetusTila);
         }
 
-        // POST: Lasnaolotieto/Delete/5
+        // POST: OpetusTilat/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Lasnaolotiedot lasnaolotiedot = db.Lasnaolotiedot.Find(id);
-            db.Lasnaolotiedot.Remove(lasnaolotiedot);
+            OpetusTila opetusTila = db.OpetusTila.Find(id);
+            db.OpetusTila.Remove(opetusTila);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

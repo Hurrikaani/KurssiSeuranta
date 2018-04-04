@@ -17,15 +17,15 @@ namespace KurssiSeuranta.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Opettaja()
         {
-            this.Lasnaolotiedot = new HashSet<Lasnaolotiedot>();
+            this.Läsnäolotiedot = new HashSet<Läsnäolotiedot>();
         }
     
         public int OpettajaID { get; set; }
         public string Etunimi { get; set; }
         public string Sukunimi { get; set; }
-        public int Opettajanro { get; set; }
+        public string Opettajanro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lasnaolotiedot> Lasnaolotiedot { get; set; }
+        public virtual ICollection<Läsnäolotiedot> Läsnäolotiedot { get; set; }
     }
 }

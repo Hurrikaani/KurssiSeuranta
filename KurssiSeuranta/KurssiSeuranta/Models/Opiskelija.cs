@@ -17,16 +17,16 @@ namespace KurssiSeuranta.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Opiskelija()
         {
-            this.Kurssi = new HashSet<Kurssi>();
+            this.Läsnäolotiedot = new HashSet<Läsnäolotiedot>();
         }
     
         public string Etunimi { get; set; }
         public string Sukunimi { get; set; }
-        public int Opiskelijanro { get; set; }
+        public string Opiskelijanro { get; set; }
         public int OpiskelijaID { get; set; }
         public string Tutkinto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kurssi> Kurssi { get; set; }
+        public virtual ICollection<Läsnäolotiedot> Läsnäolotiedot { get; set; }
     }
 }

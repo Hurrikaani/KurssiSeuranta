@@ -12,13 +12,12 @@ namespace KurssiSeuranta.Controllers
 {
     public class KurssitController : Controller
     {
-        private OpiskelijarekisteriEntities db = new OpiskelijarekisteriEntities();
+        private KurssiRekisteriEntities db = new KurssiRekisteriEntities();
 
         // GET: Kurssit
         public ActionResult Index()
         {
-            var kurssi = db.Kurssi.Include(k => k.Opiskelija).Include(k => k.Lasnaolotiedot);
-            return View(kurssi.ToList());
+            return View(db.Kurssi.ToList());
         }
 
         // GET: Kurssit/Details/5
@@ -39,8 +38,6 @@ namespace KurssiSeuranta.Controllers
         // GET: Kurssit/Create
         public ActionResult Create()
         {
-            ViewBag.OpiskelijaID = new SelectList(db.Opiskelija, "OpiskelijaID", "Etunimi");
-            ViewBag.RekisteriID = new SelectList(db.Lasnaolotiedot, "RekisteriID", "RekisteriID");
             return View();
         }
 
@@ -49,7 +46,7 @@ namespace KurssiSeuranta.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Kurssinimi,Kurssikoodi,Luokka,KurssiID,RekisteriID,OpiskelijaID")] Kurssi kurssi)
+        public ActionResult Create([Bind(Include = "Kurssinimi,Kurssikoodi,KurssiID")] Kurssi kurssi)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +55,6 @@ namespace KurssiSeuranta.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OpiskelijaID = new SelectList(db.Opiskelija, "OpiskelijaID", "Etunimi", kurssi.OpiskelijaID);
-            ViewBag.RekisteriID = new SelectList(db.Lasnaolotiedot, "RekisteriID", "RekisteriID", kurssi.RekisteriID);
             return View(kurssi);
         }
 
@@ -75,8 +70,6 @@ namespace KurssiSeuranta.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OpiskelijaID = new SelectList(db.Opiskelija, "OpiskelijaID", "Etunimi", kurssi.OpiskelijaID);
-            ViewBag.RekisteriID = new SelectList(db.Lasnaolotiedot, "RekisteriID", "RekisteriID", kurssi.RekisteriID);
             return View(kurssi);
         }
 
@@ -85,7 +78,7 @@ namespace KurssiSeuranta.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Kurssinimi,Kurssikoodi,Luokka,KurssiID,RekisteriID,OpiskelijaID")] Kurssi kurssi)
+        public ActionResult Edit([Bind(Include = "Kurssinimi,Kurssikoodi,KurssiID")] Kurssi kurssi)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +86,6 @@ namespace KurssiSeuranta.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OpiskelijaID = new SelectList(db.Opiskelija, "OpiskelijaID", "Etunimi", kurssi.OpiskelijaID);
-            ViewBag.RekisteriID = new SelectList(db.Lasnaolotiedot, "RekisteriID", "RekisteriID", kurssi.RekisteriID);
             return View(kurssi);
         }
 

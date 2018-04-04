@@ -1,4 +1,4 @@
-﻿@model KurssiSeuranta.Models.Lasnaolotiedot
+﻿@model KurssiSeuranta.Models.Läsnäolotiedot
 
 @{
     ViewBag.Title = "Edit";
@@ -12,14 +12,14 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Lasnaolotiedot</h4>
+        <h4>Läsnäolotiedot</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Kirjautuminen_sisaan, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Kirjautuminen_sisään, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Kirjautuminen_sisaan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Kirjautuminen_sisaan, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Kirjautuminen_sisään, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Kirjautuminen_sisään, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -39,6 +39,8 @@
             </div>
         </div>
 
+        @Html.HiddenFor(model => model.RekisteriID)
+
         <div class="form-group">
             @Html.LabelFor(model => model.OpettajaID, "OpettajaID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,7 +49,29 @@
             </div>
         </div>
 
-        @Html.HiddenFor(model => model.RekisteriID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.KurssiID, "KurssiID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("KurssiID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.KurssiID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OpiskelijaID, "OpiskelijaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OpiskelijaID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OpiskelijaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LuokkaID, "LuokkaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("LuokkaID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LuokkaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
