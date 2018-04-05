@@ -11,19 +11,19 @@
     <EntitySet Name="Opettaja" EntityType="KurssiRekisteriModel.Store.Opettaja" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OpetusTila" EntityType="KurssiRekisteriModel.Store.OpetusTila" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Opiskelija" EntityType="KurssiRekisteriModel.Store.Opiskelija" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK__Läsnäolot__Kurss__3E52440B" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Kurss__3E52440B">
+    <AssociationSet Name="FK__Läsnäolot__Kurss__5070F446" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Kurss__5070F446">
       <End Role="Kurssi" EntitySet="Kurssi" />
       <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
     </AssociationSet>
-    <AssociationSet Name="FK__Läsnäolot__Luokk__47DBAE45" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Luokk__47DBAE45">
+    <AssociationSet Name="FK__Läsnäolot__Luokk__4D94879B" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Luokk__4D94879B">
       <End Role="OpetusTila" EntitySet="OpetusTila" />
       <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
     </AssociationSet>
-    <AssociationSet Name="FK__Läsnäolot__Opett__46E78A0C" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Opett__46E78A0C">
+    <AssociationSet Name="FK__Läsnäolot__Opett__534D60F1" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Opett__534D60F1">
       <End Role="Opettaja" EntitySet="Opettaja" />
       <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
     </AssociationSet>
-    <AssociationSet Name="FK__Läsnäolot__Opisk__3F466844" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Opisk__3F466844">
+    <AssociationSet Name="FK__Läsnäolot__Opisk__5629CD9C" Association="KurssiRekisteriModel.Store.FK__Läsnäolot__Opisk__5629CD9C">
       <End Role="Opiskelija" EntitySet="Opiskelija" />
       <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
     </AssociationSet>
@@ -34,7 +34,7 @@
     </Key>
     <Property Name="Kurssinimi" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Kurssikoodi" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="KurssiID" Type="int" Nullable="false" />
+    <Property Name="KurssiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Läsnäolotiedot">
     <Key>
@@ -43,7 +43,7 @@
     <Property Name="Kirjautuminen_sisään" Type="datetime" Nullable="true" />
     <Property Name="Kirjautuminen_ulos" Type="datetime" Nullable="true" />
     <Property Name="Luokkanumero" Type="nvarchar" Nullable="true" MaxLength="25" />
-    <Property Name="RekisteriID" Type="int" Nullable="false" />
+    <Property Name="RekisteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OpettajaID" Type="int" Nullable="true" />
     <Property Name="KurssiID" Type="int" Nullable="true" />
     <Property Name="OpiskelijaID" Type="int" Nullable="true" />
@@ -53,7 +53,7 @@
     <Key>
       <PropertyRef Name="OpettajaID" />
     </Key>
-    <Property Name="OpettajaID" Type="int" Nullable="false" />
+    <Property Name="OpettajaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Etunimi" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Sukunimi" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Opettajanro" Type="nvarchar" Nullable="true" MaxLength="25" />
@@ -73,10 +73,10 @@
     <Property Name="Etunimi" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Sukunimi" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Opiskelijanro" Type="nvarchar" Nullable="true" MaxLength="25" />
-    <Property Name="OpiskelijaID" Type="int" Nullable="false" />
+    <Property Name="OpiskelijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Tutkinto" Type="nvarchar" Nullable="true" MaxLength="50" />
   </EntityType>
-  <Association Name="FK__Läsnäolot__Kurss__3E52440B">
+  <Association Name="FK__Läsnäolot__Kurss__5070F446">
     <End Role="Kurssi" Type="KurssiRekisteriModel.Store.Kurssi" Multiplicity="0..1" />
     <End Role="Läsnäolotiedot" Type="KurssiRekisteriModel.Store.Läsnäolotiedot" Multiplicity="*" />
     <ReferentialConstraint>
@@ -88,7 +88,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Läsnäolot__Luokk__47DBAE45">
+  <Association Name="FK__Läsnäolot__Luokk__4D94879B">
     <End Role="OpetusTila" Type="KurssiRekisteriModel.Store.OpetusTila" Multiplicity="0..1" />
     <End Role="Läsnäolotiedot" Type="KurssiRekisteriModel.Store.Läsnäolotiedot" Multiplicity="*" />
     <ReferentialConstraint>
@@ -100,7 +100,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Läsnäolot__Opett__46E78A0C">
+  <Association Name="FK__Läsnäolot__Opett__534D60F1">
     <End Role="Opettaja" Type="KurssiRekisteriModel.Store.Opettaja" Multiplicity="0..1" />
     <End Role="Läsnäolotiedot" Type="KurssiRekisteriModel.Store.Läsnäolotiedot" Multiplicity="*" />
     <ReferentialConstraint>
@@ -112,7 +112,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Läsnäolot__Opisk__3F466844">
+  <Association Name="FK__Läsnäolot__Opisk__5629CD9C">
     <End Role="Opiskelija" Type="KurssiRekisteriModel.Store.Opiskelija" Multiplicity="0..1" />
     <End Role="Läsnäolotiedot" Type="KurssiRekisteriModel.Store.Läsnäolotiedot" Multiplicity="*" />
     <ReferentialConstraint>
@@ -128,14 +128,37 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KurssiRekisteriModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KurssiRekisteriEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kurssi" EntityType="KurssiRekisteriModel.Kurssi" />
+          <EntitySet Name="Läsnäolotiedot" EntityType="KurssiRekisteriModel.Läsnäolotiedot" />
+          <EntitySet Name="Opettaja" EntityType="KurssiRekisteriModel.Opettaja" />
+          <EntitySet Name="OpetusTila" EntityType="KurssiRekisteriModel.OpetusTila" />
+          <EntitySet Name="Opiskelija" EntityType="KurssiRekisteriModel.Opiskelija" />
+          <AssociationSet Name="FK__Läsnäolot__Kurss__5070F446" Association="KurssiRekisteriModel.FK__Läsnäolot__Kurss__5070F446">
+            <End Role="Kurssi" EntitySet="Kurssi" />
+            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Läsnäolot__Luokk__4D94879B" Association="KurssiRekisteriModel.FK__Läsnäolot__Luokk__4D94879B">
+            <End Role="OpetusTila" EntitySet="OpetusTila" />
+            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Läsnäolot__Opett__534D60F1" Association="KurssiRekisteriModel.FK__Läsnäolot__Opett__534D60F1">
+            <End Role="Opettaja" EntitySet="Opettaja" />
+            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Läsnäolot__Opisk__5629CD9C" Association="KurssiRekisteriModel.FK__Läsnäolot__Opisk__5629CD9C">
+            <End Role="Opiskelija" EntitySet="Opiskelija" />
+            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Kurssi">
           <Key>
             <PropertyRef Name="KurssiID" />
           </Key>
           <Property Name="Kurssinimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Kurssikoodi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="KurssiID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Läsnäolotiedot" Relationship="Self.FK__Läsnäolot__Kurss__3E52440B" FromRole="Kurssi" ToRole="Läsnäolotiedot" />
+          <Property Name="KurssiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Läsnäolotiedot" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Kurss__5070F446" FromRole="Kurssi" ToRole="Läsnäolotiedot" />
         </EntityType>
         <EntityType Name="Läsnäolotiedot">
           <Key>
@@ -144,25 +167,25 @@
           <Property Name="Kirjautuminen_sisään" Type="DateTime" Precision="0" />
           <Property Name="Kirjautuminen_ulos" Type="DateTime" Precision="0" />
           <Property Name="Luokkanumero" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="RekisteriID" Type="Int32" Nullable="false" />
+          <Property Name="RekisteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OpettajaID" Type="Int32" />
           <Property Name="KurssiID" Type="Int32" />
           <Property Name="OpiskelijaID" Type="Int32" />
           <Property Name="LuokkaID" Type="Int32" />
-          <NavigationProperty Name="Kurssi" Relationship="Self.FK__Läsnäolot__Kurss__3E52440B" FromRole="Läsnäolotiedot" ToRole="Kurssi" />
-          <NavigationProperty Name="OpetusTila" Relationship="Self.FK__Läsnäolot__Luokk__47DBAE45" FromRole="Läsnäolotiedot" ToRole="OpetusTila" />
-          <NavigationProperty Name="Opettaja" Relationship="Self.FK__Läsnäolot__Opett__46E78A0C" FromRole="Läsnäolotiedot" ToRole="Opettaja" />
-          <NavigationProperty Name="Opiskelija" Relationship="Self.FK__Läsnäolot__Opisk__3F466844" FromRole="Läsnäolotiedot" ToRole="Opiskelija" />
+          <NavigationProperty Name="Kurssi" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Kurss__5070F446" FromRole="Läsnäolotiedot" ToRole="Kurssi" />
+          <NavigationProperty Name="OpetusTila" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Luokk__4D94879B" FromRole="Läsnäolotiedot" ToRole="OpetusTila" />
+          <NavigationProperty Name="Opettaja" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Opett__534D60F1" FromRole="Läsnäolotiedot" ToRole="Opettaja" />
+          <NavigationProperty Name="Opiskelija" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Opisk__5629CD9C" FromRole="Läsnäolotiedot" ToRole="Opiskelija" />
         </EntityType>
         <EntityType Name="Opettaja">
           <Key>
             <PropertyRef Name="OpettajaID" />
           </Key>
-          <Property Name="OpettajaID" Type="Int32" Nullable="false" />
+          <Property Name="OpettajaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Opettajanro" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Läsnäolotiedot" Relationship="Self.FK__Läsnäolot__Opett__46E78A0C" FromRole="Opettaja" ToRole="Läsnäolotiedot" />
+          <NavigationProperty Name="Läsnäolotiedot" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Opett__534D60F1" FromRole="Opettaja" ToRole="Läsnäolotiedot" />
         </EntityType>
         <EntityType Name="OpetusTila">
           <Key>
@@ -171,7 +194,7 @@
           <Property Name="LuokkaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LuokanNimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LuokkaKoodi" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Läsnäolotiedot" Relationship="Self.FK__Läsnäolot__Luokk__47DBAE45" FromRole="OpetusTila" ToRole="Läsnäolotiedot" />
+          <NavigationProperty Name="Läsnäolotiedot" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Luokk__4D94879B" FromRole="OpetusTila" ToRole="Läsnäolotiedot" />
         </EntityType>
         <EntityType Name="Opiskelija">
           <Key>
@@ -180,13 +203,13 @@
           <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Opiskelijanro" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="OpiskelijaID" Type="Int32" Nullable="false" />
+          <Property Name="OpiskelijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tutkinto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Läsnäolotiedot" Relationship="Self.FK__Läsnäolot__Opisk__3F466844" FromRole="Opiskelija" ToRole="Läsnäolotiedot" />
+          <NavigationProperty Name="Läsnäolotiedot" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Opisk__5629CD9C" FromRole="Opiskelija" ToRole="Läsnäolotiedot" />
         </EntityType>
-        <Association Name="FK__Läsnäolot__Kurss__3E52440B">
-          <End Role="Kurssi" Type="Self.Kurssi" Multiplicity="0..1" />
-          <End Role="Läsnäolotiedot" Type="Self.Läsnäolotiedot" Multiplicity="*" />
+        <Association Name="FK__Läsnäolot__Kurss__5070F446">
+          <End Type="KurssiRekisteriModel.Kurssi" Role="Kurssi" Multiplicity="0..1" />
+          <End Type="KurssiRekisteriModel.Läsnäolotiedot" Role="Läsnäolotiedot" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kurssi">
               <PropertyRef Name="KurssiID" />
@@ -196,9 +219,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Läsnäolot__Luokk__47DBAE45">
-          <End Role="OpetusTila" Type="Self.OpetusTila" Multiplicity="0..1" />
-          <End Role="Läsnäolotiedot" Type="Self.Läsnäolotiedot" Multiplicity="*" />
+        <Association Name="FK__Läsnäolot__Luokk__4D94879B">
+          <End Type="KurssiRekisteriModel.OpetusTila" Role="OpetusTila" Multiplicity="0..1" />
+          <End Type="KurssiRekisteriModel.Läsnäolotiedot" Role="Läsnäolotiedot" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OpetusTila">
               <PropertyRef Name="LuokkaID" />
@@ -208,9 +231,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Läsnäolot__Opett__46E78A0C">
-          <End Role="Opettaja" Type="Self.Opettaja" Multiplicity="0..1" />
-          <End Role="Läsnäolotiedot" Type="Self.Läsnäolotiedot" Multiplicity="*" />
+        <Association Name="FK__Läsnäolot__Opett__534D60F1">
+          <End Type="KurssiRekisteriModel.Opettaja" Role="Opettaja" Multiplicity="0..1" />
+          <End Type="KurssiRekisteriModel.Läsnäolotiedot" Role="Läsnäolotiedot" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Opettaja">
               <PropertyRef Name="OpettajaID" />
@@ -220,9 +243,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Läsnäolot__Opisk__3F466844">
-          <End Role="Opiskelija" Type="Self.Opiskelija" Multiplicity="0..1" />
-          <End Role="Läsnäolotiedot" Type="Self.Läsnäolotiedot" Multiplicity="*" />
+        <Association Name="FK__Läsnäolot__Opisk__5629CD9C">
+          <End Type="KurssiRekisteriModel.Opiskelija" Role="Opiskelija" Multiplicity="0..1" />
+          <End Type="KurssiRekisteriModel.Läsnäolotiedot" Role="Läsnäolotiedot" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Opiskelija">
               <PropertyRef Name="OpiskelijaID" />
@@ -232,29 +255,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KurssiRekisteriEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Kurssi" EntityType="Self.Kurssi" />
-          <EntitySet Name="Läsnäolotiedot" EntityType="Self.Läsnäolotiedot" />
-          <EntitySet Name="Opettaja" EntityType="Self.Opettaja" />
-          <EntitySet Name="OpetusTila" EntityType="Self.OpetusTila" />
-          <EntitySet Name="Opiskelija" EntityType="Self.Opiskelija" />
-          <AssociationSet Name="FK__Läsnäolot__Kurss__3E52440B" Association="Self.FK__Läsnäolot__Kurss__3E52440B">
-            <End Role="Kurssi" EntitySet="Kurssi" />
-            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Läsnäolot__Luokk__47DBAE45" Association="Self.FK__Läsnäolot__Luokk__47DBAE45">
-            <End Role="OpetusTila" EntitySet="OpetusTila" />
-            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Läsnäolot__Opett__46E78A0C" Association="Self.FK__Läsnäolot__Opett__46E78A0C">
-            <End Role="Opettaja" EntitySet="Opettaja" />
-            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Läsnäolot__Opisk__3F466844" Association="Self.FK__Läsnäolot__Opisk__3F466844">
-            <End Role="Opiskelija" EntitySet="Opiskelija" />
-            <End Role="Läsnäolotiedot" EntitySet="Läsnäolotiedot" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

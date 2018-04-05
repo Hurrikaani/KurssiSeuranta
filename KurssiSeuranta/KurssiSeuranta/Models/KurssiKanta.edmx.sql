@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/04/2018 14:16:45
+-- Date Created: 04/05/2018 13:36:40
 -- Generated from EDMX file: C:\Users\hurri\Source\Repos\KurssiSeuranta\KurssiSeuranta\KurssiSeuranta\Models\KurssiKanta.edmx
 -- --------------------------------------------------
 
@@ -17,17 +17,17 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Kurss__3E52440B]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Kurss__3E52440B];
+IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Kurss__5070F446]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Kurss__5070F446];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Luokk__47DBAE45]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Luokk__47DBAE45];
+IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Luokk__4D94879B]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Luokk__4D94879B];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Opett__46E78A0C]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Opett__46E78A0C];
+IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Opett__534D60F1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Opett__534D60F1];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Opisk__3F466844]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Opisk__3F466844];
+IF OBJECT_ID(N'[dbo].[FK__Läsnäolot__Opisk__5629CD9C]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Läsnäolotiedot] DROP CONSTRAINT [FK__Läsnäolot__Opisk__5629CD9C];
 GO
 
 -- --------------------------------------------------
@@ -58,7 +58,7 @@ GO
 CREATE TABLE [dbo].[Kurssi] (
     [Kurssinimi] nvarchar(50)  NULL,
     [Kurssikoodi] nvarchar(50)  NULL,
-    [KurssiID] int  NOT NULL
+    [KurssiID] int IDENTITY(1,1) NOT NULL
 );
 GO
 
@@ -67,7 +67,7 @@ CREATE TABLE [dbo].[Läsnäolotiedot] (
     [Kirjautuminen_sisään] datetime  NULL,
     [Kirjautuminen_ulos] datetime  NULL,
     [Luokkanumero] nvarchar(25)  NULL,
-    [RekisteriID] int  NOT NULL,
+    [RekisteriID] int IDENTITY(1,1) NOT NULL,
     [OpettajaID] int  NULL,
     [KurssiID] int  NULL,
     [OpiskelijaID] int  NULL,
@@ -77,7 +77,7 @@ GO
 
 -- Creating table 'Opettaja'
 CREATE TABLE [dbo].[Opettaja] (
-    [OpettajaID] int  NOT NULL,
+    [OpettajaID] int IDENTITY(1,1) NOT NULL,
     [Etunimi] nvarchar(50)  NULL,
     [Sukunimi] nvarchar(50)  NULL,
     [Opettajanro] nvarchar(25)  NULL
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Opiskelija] (
     [Etunimi] nvarchar(50)  NULL,
     [Sukunimi] nvarchar(50)  NULL,
     [Opiskelijanro] nvarchar(25)  NULL,
-    [OpiskelijaID] int  NOT NULL,
+    [OpiskelijaID] int IDENTITY(1,1) NOT NULL,
     [Tutkinto] nvarchar(50)  NULL
 );
 GO
@@ -142,60 +142,60 @@ GO
 
 -- Creating foreign key on [KurssiID] in table 'Läsnäolotiedot'
 ALTER TABLE [dbo].[Läsnäolotiedot]
-ADD CONSTRAINT [FK__Läsnäolot__Kurss__3E52440B]
+ADD CONSTRAINT [FK__Läsnäolot__Kurss__5070F446]
     FOREIGN KEY ([KurssiID])
     REFERENCES [dbo].[Kurssi]
         ([KurssiID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Kurss__3E52440B'
-CREATE INDEX [IX_FK__Läsnäolot__Kurss__3E52440B]
+-- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Kurss__5070F446'
+CREATE INDEX [IX_FK__Läsnäolot__Kurss__5070F446]
 ON [dbo].[Läsnäolotiedot]
     ([KurssiID]);
 GO
 
 -- Creating foreign key on [LuokkaID] in table 'Läsnäolotiedot'
 ALTER TABLE [dbo].[Läsnäolotiedot]
-ADD CONSTRAINT [FK__Läsnäolot__Luokk__47DBAE45]
+ADD CONSTRAINT [FK__Läsnäolot__Luokk__4D94879B]
     FOREIGN KEY ([LuokkaID])
     REFERENCES [dbo].[OpetusTila]
         ([LuokkaID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Luokk__47DBAE45'
-CREATE INDEX [IX_FK__Läsnäolot__Luokk__47DBAE45]
+-- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Luokk__4D94879B'
+CREATE INDEX [IX_FK__Läsnäolot__Luokk__4D94879B]
 ON [dbo].[Läsnäolotiedot]
     ([LuokkaID]);
 GO
 
 -- Creating foreign key on [OpettajaID] in table 'Läsnäolotiedot'
 ALTER TABLE [dbo].[Läsnäolotiedot]
-ADD CONSTRAINT [FK__Läsnäolot__Opett__46E78A0C]
+ADD CONSTRAINT [FK__Läsnäolot__Opett__534D60F1]
     FOREIGN KEY ([OpettajaID])
     REFERENCES [dbo].[Opettaja]
         ([OpettajaID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Opett__46E78A0C'
-CREATE INDEX [IX_FK__Läsnäolot__Opett__46E78A0C]
+-- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Opett__534D60F1'
+CREATE INDEX [IX_FK__Läsnäolot__Opett__534D60F1]
 ON [dbo].[Läsnäolotiedot]
     ([OpettajaID]);
 GO
 
 -- Creating foreign key on [OpiskelijaID] in table 'Läsnäolotiedot'
 ALTER TABLE [dbo].[Läsnäolotiedot]
-ADD CONSTRAINT [FK__Läsnäolot__Opisk__3F466844]
+ADD CONSTRAINT [FK__Läsnäolot__Opisk__5629CD9C]
     FOREIGN KEY ([OpiskelijaID])
     REFERENCES [dbo].[Opiskelija]
         ([OpiskelijaID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Opisk__3F466844'
-CREATE INDEX [IX_FK__Läsnäolot__Opisk__3F466844]
+-- Creating non-clustered index for FOREIGN KEY 'FK__Läsnäolot__Opisk__5629CD9C'
+CREATE INDEX [IX_FK__Läsnäolot__Opisk__5629CD9C]
 ON [dbo].[Läsnäolotiedot]
     ([OpiskelijaID]);
 GO
