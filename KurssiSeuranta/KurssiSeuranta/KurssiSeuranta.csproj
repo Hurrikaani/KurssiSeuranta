@@ -190,6 +190,11 @@
       <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\KurssiViewModel.cs" />
+    <Compile Include="ViewModels\LasnaolotietoViewModel.cs" />
+    <Compile Include="ViewModels\OpettajaViewModel.cs" />
+    <Compile Include="ViewModels\OpetustilaViewModel.cs" />
+    <Compile Include="ViewModels\OpiskelijaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -305,7 +310,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54370</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KurssiSeuranta.Models;
+using KurssiSeuranta.ViewModels;
 
 namespace KurssiSeuranta.Controllers
 {
@@ -17,7 +18,25 @@ namespace KurssiSeuranta.Controllers
         // GET: OpetusTilat
         public ActionResult Index()
         {
-            return View(db.OpetusTila.ToList());
+            List<OpetustilaViewModel> model = new List<OpetustilaViewModel>();
+            KurssiRekisteriEntities entities = new KurssiRekisteriEntities();
+            try
+            {
+                List<OpetusTila> opetustila = entities.OpetusTila.OrderBy(OpetusTila => OpetusTila.LuokkaID).ToList();
+                foreach (OpetusTila opetil in opetustila)
+                {
+                    OpetustilaViewModel view = new OpetustilaViewModel();
+                    view.LuokkaID = opetil.LuokkaID;
+                    view.LuokanNimi = opetil.LuokanNimi;
+                    view.LuokkaKoodi = opetil.LuokkaKoodi;
+                    model.Add(view);
+                }
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+            return View(model);
         }
 
         // GET: OpetusTilat/Details/5
