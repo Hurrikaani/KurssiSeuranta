@@ -24,8 +24,18 @@ namespace KurssiSeuranta.ViewModels
              public string LuokkaKoodi { get; set; }
             [Display(Name = "Opiskelijan nimi")]
                public string OpiskelijaNimi { get; set; }
-        [Display(Name = "Opettajan nimi")]
-        public string OpettajaNimi { get; set; }
+                [Display(Name = "Opettajan nimi")]
+                public string OpettajaNimi { get; set; }
+                public string Etunimi { get; set; }
+                public string Sukunimi { get; set; }
+                public string Opettajanro { get; set; }
+                 public int? KirjattuID { get; set; }
+                 public int? KurssiRekisteriID { get; set; }
+               public string Opiskelijanro { get; set; }
+          
+
+
+
 
         //public virtual Kurssi Kurssi { get; set; }
         //public virtual OpetusTila OpetusTila { get; set; }

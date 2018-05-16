@@ -3,6 +3,93 @@
 @{
     ViewBag.Title = "Index";
 }
+@section scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        var LuokkaKoodiModel = (function () {
+
+            function LuokkaKoodiModel() {
+
+            }
+
+            return LuokkaKoodiModel;
+
+        }());
+
+        function initKurssiTallennus() {
+
+            $("#TallennaKurssiButton").click(function () {
+
+                //alert("Toimii!");
+
+                var kurssiKoodi = $("#KurssiKoodi").val();
+
+                var oppilasKoodi = $("#OppilasKoodi").val();
+
+                alert("L: " + kurssiKoodi + ", A:" + oppilasKoodi);
+
+                //määritetään muuttuja:
+
+                var data = new LuokkaKoodiModel();
+
+                data.KurssiKoodi = kurssiKoodi;
+
+                data.OppilasKoodi = oppilasKoodi;
+
+                //lähetetään JSON-muotoista dataa palvelimelle
+
+                $.ajax({
+
+                    type: "POST",
+
+                    url: "/lasnaolotieto/TallennaKurssi",
+
+                    data: JSON.stringify(data),
+
+                    contentType: "application/json",
+
+                    success: function (data) {
+
+                        if (data.success === true) {
+
+                            alert("Asset successfully assigned.");
+
+                        }
+
+                        else {
+
+                            alert("There was an error: " + data.error);
+
+                        }
+
+                    },
+
+                    dataType: "json"
+
+                });
+
+            });
+
+        }
+
+    </script>
+
+    <script>
+
+    $(function () {
+
+    initKurssiTallennus();
+
+    })
+
+    </script>
+
+}
+
+
 
 <h2>Index</h2>
 
@@ -33,49 +120,50 @@
             @Html.DisplayNameFor(model => model.LuokkaKoodi)
         </th>
         <th>
-                    @Html.DisplayNameFor(model => model.OpiskelijaNimi)
-          </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OpettajaNimi)
-                </th>
-                <th></th>
-            </tr>
-
-        @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kirjautuminen_sisään)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kirjautuminen_ulos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Luokkanumero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kurssinimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kurssikoodi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LuokanNimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LuokkaKoodi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpiskelijaNimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpettajaNimi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.RekisteriID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.RekisteriID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.RekisteriID })
-        </td>
+            @Html.DisplayNameFor(model => model.OpiskelijaNimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpettajaNimi)
+        </th>
+        <th></th>
     </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kirjautuminen_sisään)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kirjautuminen_ulos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Luokkanumero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kurssinimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kurssikoodi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuokanNimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuokkaKoodi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpiskelijaNimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpettajaNimi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RekisteriID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RekisteriID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RekisteriID })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -31,6 +31,7 @@ namespace KurssiSeuranta.Controllers
                     view.Sukunimi = op.Sukunimi;
                     view.Opiskelijanro = op.Opiskelijanro;
                     view.Tutkinto = op.Tutkinto;
+
                     model.Add(view);
                 }
             }
@@ -44,22 +45,36 @@ namespace KurssiSeuranta.Controllers
         // GET: Opiskelijat/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            OpiskelijaViewModel model = new OpiskelijaViewModel();
+            KurssiRekisteriEntities entities = new KurssiRekisteriEntities();
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Opiskelija op = entities.Opiskelija.Find(id);
+                if (op == null)
+                {
+                    return HttpNotFound();
+                }
+                OpiskelijaViewModel view = new OpiskelijaViewModel();
+                view.OpiskelijaID = op.OpiskelijaID;
+                view.Etunimi = op.Etunimi;
+                view.Sukunimi = op.Sukunimi;
+                view.Opiskelijanro = op.Opiskelijanro;
+                view.Tutkinto = op.Tutkinto;
+                model = view;
             }
-            Opiskelija opiskelija = db.Opiskelija.Find(id);
-            if (opiskelija == null)
+            finally
             {
-                return HttpNotFound();
+                entities.Dispose();
             }
-            return View(opiskelija);
+            return View(model);
         }
 
         // GET: Opiskelijat/Create
         public ActionResult Create()
         {
-            return View();
+            KurssiRekisteriEntities db = new KurssiRekisteriEntities();
+            OpiskelijaViewModel model = new OpiskelijaViewModel();
+            return View(model);
         }
 
         // POST: Opiskelijat/Create
@@ -67,31 +82,49 @@ namespace KurssiSeuranta.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Etunimi,Sukunimi,Opiskelijanro,OpiskelijaID,Tutkinto")] Opiskelija opiskelija)
+        public ActionResult Create(OpiskelijaViewModel model)
         {
-            if (ModelState.IsValid)
+            KurssiRekisteriEntities db = new KurssiRekisteriEntities();
+            Opiskelija view = new Opiskelija();
+            view.OpiskelijaID = model.OpiskelijaID;
+            view.Etunimi = model.Etunimi;
+            view.Sukunimi = model.Etunimi;
+            view.Opiskelijanro = model.Opiskelijanro;
+            view.Tutkinto = model.Tutkinto;
+            db.Opiskelija.Add(view);
+            try
             {
-                db.Opiskelija.Add(opiskelija);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
+            catch (Exception ex)
+            {
 
-            return View(opiskelija);
+                throw;
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: Opiskelijat/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Opiskelija opiskelija = db.Opiskelija.Find(id);
-            if (opiskelija == null)
+            Opiskelija op = db.Opiskelija.Find(id);
+            if (op == null)
             {
                 return HttpNotFound();
             }
-            return View(opiskelija);
+            OpiskelijaViewModel view = new OpiskelijaViewModel();
+            view.OpiskelijaID = op.OpiskelijaID;
+            view.Etunimi = op.Etunimi;
+            view.Sukunimi = op.Etunimi;
+            view.Opiskelijanro = op.Opiskelijanro;
+            view.Tutkinto = op.Tutkinto;
+
+            return View(view);
+
         }
 
         // POST: Opiskelijat/Edit/5
@@ -99,30 +132,44 @@ namespace KurssiSeuranta.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Etunimi,Sukunimi,Opiskelijanro,OpiskelijaID,Tutkinto")] Opiskelija opiskelija)
+        public ActionResult Edit(OpiskelijaViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(opiskelija).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(opiskelija);
+            Opiskelija view = db.Opiskelija.Find(model.OpiskelijaID);
+
+            //view.CustomerID = model.CustomerID;
+            view.OpiskelijaID = model.OpiskelijaID;
+            view.Etunimi = model.Etunimi;
+            view.Sukunimi = model.Sukunimi;
+            view.Opiskelijanro = model.Opiskelijanro;
+            view.Tutkinto = model.Tutkinto;
+
+            db.SaveChanges();
+
+            return View("Index");
         }
 
         // GET: Opiskelijat/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Opiskelija opiskelija = db.Opiskelija.Find(id);
-            if (opiskelija == null)
+            Opiskelija op = db.Opiskelija.Find(id);
+            if (op == null)
             {
                 return HttpNotFound();
             }
-            return View(opiskelija);
+
+            OpiskelijaViewModel view = new OpiskelijaViewModel();
+            view.OpiskelijaID = op.OpiskelijaID;
+            view.Etunimi = op.Sukunimi;
+            view.Sukunimi = op.Sukunimi;
+            view.Opiskelijanro = op.Opiskelijanro;
+            view.Tutkinto = op.Tutkinto;
+
+
+            return View(view);
         }
 
         // POST: Opiskelijat/Delete/5

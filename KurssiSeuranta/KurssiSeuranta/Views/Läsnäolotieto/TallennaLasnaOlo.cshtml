@@ -1,0 +1,124 @@
+﻿@model IEnumerable<KurssiSeuranta.ViewModels.LasnaolotietoViewModel>
+
+@{
+    ViewBag.Title = "TallennaLasnaOlo";
+}
+@section scripts{
+
+    <script src="~/Scripts/Application/Logic.js"></script>
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () {
+
+            initKurssiTallennus();
+
+        })
+
+    </script>
+}
+
+<h2>TallennaLasnaOlo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    <input type="text" id="Kurssikoodi" placeholder="Kurssikoodi" autofocus autocomplete="on" />
+</p>
+<p>
+    <input type="text" id="Oppilaskoodi" placeholder="Oppilaskoodi" autocomplete="on" />
+</p>
+
+
+<button id="TallennaKurssiButton" class="w3-btn w3-large">Tallenna kurssitieto</button>
+
+<hr>
+
+
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Luokkanumero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RekisteriID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpettajaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KurssiID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpiskelijaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuokkaID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.KirjattuID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KurssiRekisteriID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kirjautuminen_sisään)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Kirjautuminen_ulos)
+            </td>*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Luokkanumero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RekisteriID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpettajaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KurssiID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpiskelijaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuokkaID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.KirjattuID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KurssiRekisteriID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

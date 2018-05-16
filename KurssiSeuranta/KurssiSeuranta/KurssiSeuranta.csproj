@@ -162,6 +162,7 @@
     <Compile Include="Models\Kurssi.cs">
       <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KurssiDataModel.cs" />
     <Compile Include="Models\KurssiKanta.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,6 +191,7 @@
       <DependentUpon>KurssiKanta.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\WebUtilities.cs" />
     <Compile Include="ViewModels\KurssiViewModel.cs" />
     <Compile Include="ViewModels\LasnaolotietoViewModel.cs" />
     <Compile Include="ViewModels\OpettajaViewModel.cs" />
@@ -203,6 +205,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="loggaus.html" />
     <Content Include="Models\KurssiKanta.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KurssiKanta.edmx</DependentUpon>
@@ -214,6 +217,7 @@
       <DependentUpon>KurssiKanta.edmx</DependentUpon>
       <LastGenOutput>KurssiKanta.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Application\Logic.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -237,6 +241,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="tyyli.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -276,6 +281,7 @@
     <Content Include="Views\Kurssit\Details.cshtml" />
     <Content Include="Views\Kurssit\Edit.cshtml" />
     <Content Include="Views\Kurssit\Index.cshtml" />
+    <Content Include="Views\Läsnäolotieto\TallennaLasnaOlo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

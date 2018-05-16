@@ -1,0 +1,57 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+
+    <meta charset='UTF-8'>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="tyyli.css" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
+                <div id="iosBlurBg">
+                    <div id="whiteBg"></div>
+                </div>
+                <div id="bottomEnter"></div>
+                <div id="bottomBlurBg"></div>
+                <!-- Login Form -->
+                <div class="loginForm">
+                    <div class="title">
+                        <p>Kirjaudu<br><span>Järjestelmään</span></p>
+                        <hr>
+                        <hr class="short">
+                    </div>
+                    <form>
+                        <div class="col-3">
+                            <input class="effect-2" type="text" id="Opiskelijanumero" autofocus required autocomplete="off" placeholder="Opiskelijanumero...">
+                            <span class="focus-border"></span>
+                            <input class="effect-2" type="text" id="KurssiKoodi" required  autocomplete="off" placeholder="KurssiKoodi...">
+                            <span class="focus-border"></span>
+                            <!--<input class="effect-2" type="text" required autocomplete="off" placeholder="Kurssiavain...">
+                            <span class="focus-border"></span>-->
+
+                        </div>
+                        <div class="forget">
+                           <button class="btn-primary">Opettaja</button>
+                        </div>
+                    </form>
+                </div>
+                <a href="/Home/Index">
+                    <div class="enterButton" >
+                        <i class="fa fa-lock fa-2x text-whiot"></i><br>
+                        <span class="enterText text-white">Kirjaudu tästä</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
