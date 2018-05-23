@@ -28,8 +28,8 @@ namespace KurssiSeuranta.Controllers
                 foreach (Läsnäolotiedot läs in läsnäolotiedot)
                 {
                     LasnaolotietoViewModel view = new LasnaolotietoViewModel();
-                    view.Kirjautuminen_sisään = läs.Kirjautuminen_sisään;
-                    view.Kirjautuminen_ulos = läs.Kirjautuminen_ulos;
+                    view.Kirjautuminen_sisään = läs.Kirjautuminen_sisään.Value;
+                    view.Kirjautuminen_ulos = läs.Kirjautuminen_ulos.Value;
                     view.Luokkanumero = läs.Luokkanumero;
                     view.RekisteriID = läs.RekisteriID;
                     view.OpettajaID = läs.OpettajaID;
@@ -79,7 +79,8 @@ namespace KurssiSeuranta.Controllers
                 foreach (Läsnäolotiedot lä in läs)
                 {
                     LasnaolotietoViewModel view = new LasnaolotietoViewModel();
-                    view.Kirjautuminen_sisään = lä.Kirjautuminen_sisään.Value;
+                    view.Kirjautuminen_sisään = lä.Kirjautuminen_sisään.GetValueOrDefault();
+                    view.Kirjautuminen_ulos = lä.Kirjautuminen_ulos.GetValueOrDefault();
                     view.RekisteriID = lä.RekisteriID;
                     view.KirjattuID = lä.KirjattuID;
                     view.KurssiID = lä.KurssiID;
@@ -87,6 +88,8 @@ namespace KurssiSeuranta.Controllers
                     view.Opiskelijanro = lä.Opiskelija?.Opiskelijanro;
                     view.Kurssikoodi = lä.Kurssi?.Kurssikoodi;
                     view.KurssiRekisteriID = lä.KurssiRekisteriID;
+                    view.KirjattuUlosID = lä.KirjattuUlosID;
+                    view.KurssiUlosID = lä.KurssiUlosID;
 
                     model.Add(view);
 
@@ -148,6 +151,53 @@ namespace KurssiSeuranta.Controllers
             return Json(result);
         }
 
+
+        //Uloskirjaus
+        [HttpPost]
+        public JsonResult TallennaUlosKirjaus()
+        {
+
+            string json = Request.InputStream.ReadToEnd();
+            KurssiDataModel inputData = JsonConvert.DeserializeObject<KurssiDataModel>(json);
+            bool success = false;
+            string error = " ";
+            KurssiRekisteriEntities entities = new KurssiRekisteriEntities();
+            try
+            {
+                int opiskelijaId = (from op in entities.Opiskelija
+                                    where op.Opiskelijanro == inputData.Opiskelijanro
+                                    select op.OpiskelijaID).FirstOrDefault();
+
+                int kurssiId = (from kur in entities.Kurssi
+                                where kur.Kurssikoodi == inputData.Kurssikoodi
+                                select kur.KurssiID).FirstOrDefault();
+
+
+                if ((opiskelijaId > 0) && (kurssiId > 0))
+                {
+                    Läsnäolotiedot newEntry = new Läsnäolotiedot();
+                    newEntry.KirjattuUlosID = opiskelijaId;
+                    newEntry.KurssiUlosID = kurssiId;
+                    newEntry.Kirjautuminen_ulos = DateTime.Now;
+
+                    entities.Läsnäolotiedot.Add(newEntry);
+                    entities.SaveChanges();
+                    success = true;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                error = ex.GetType().Name + ": " + ex.Message;
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+            var result = new { success = success, error = error };
+            return Json(result);
+        }
         // GET: Läsnäolotieto/Details/5
         public ActionResult Details(int? id)
         {

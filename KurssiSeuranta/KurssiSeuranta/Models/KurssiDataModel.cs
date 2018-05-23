@@ -15,5 +15,8 @@ namespace KurssiSeuranta.Models
         public int? OpiskelijaID { get; set; }
         public string Kurssikoodi { get; set; }
         public int? KurssiID { get; set; }
+        public int KirjattuUlosID { get; set; }
+        public int KurssiUlosID { get; set; }
     }
 }
+

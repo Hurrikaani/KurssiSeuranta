@@ -11,7 +11,7 @@ namespace KurssiSeuranta.ViewModels
         //public partial class Läsnäolotiedot
         //{
             public Nullable<System.DateTime> Kirjautuminen_sisään { get; set; }
-            public Nullable<System.DateTime> Kirjautuminen_ulos { get; set; }
+            public  Nullable<System.DateTime> Kirjautuminen_ulos { get; set; }
             public string Luokkanumero { get; set; }
             public int RekisteriID { get; set; }
             public Nullable<int> OpettajaID { get; set; }
@@ -32,7 +32,9 @@ namespace KurssiSeuranta.ViewModels
                  public int? KirjattuID { get; set; }
                  public int? KurssiRekisteriID { get; set; }
                public string Opiskelijanro { get; set; }
-          
+                public int? KirjattuUlosID { get; set; }
+                public int? KurssiUlosID { get; set; }
+
 
 
 

@@ -24,6 +24,8 @@ namespace KurssiSeuranta.Models
         public Nullable<int> LuokkaID { get; set; }
         public Nullable<int> KirjattuID { get; set; }
         public Nullable<int> KurssiRekisteriID { get; set; }
+        public Nullable<int> KirjattuUlosID { get; set; }
+        public Nullable<int> KurssiUlosID { get; set; }
     
         public virtual Kurssi Kurssi { get; set; }
         public virtual OpetusTila OpetusTila { get; set; }

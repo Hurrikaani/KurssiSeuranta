@@ -217,6 +217,7 @@
       <DependentUpon>KurssiKanta.edmx</DependentUpon>
       <LastGenOutput>KurssiKanta.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Application\LogicUlos.js" />
     <Content Include="Scripts\Application\Logic.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

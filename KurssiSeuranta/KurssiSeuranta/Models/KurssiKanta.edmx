@@ -17,8 +17,8 @@
           <Key>
             <PropertyRef Name="RekisteriID" />
           </Key>
-          <Property Name="Kirjautuminen_sisään" Type="date" />
-          <Property Name="Kirjautuminen_ulos" Type="date" />
+          <Property Name="Kirjautuminen_sisään" Type="datetime" />
+          <Property Name="Kirjautuminen_ulos" Type="datetime" />
           <Property Name="Luokkanumero" Type="nvarchar" MaxLength="25" />
           <Property Name="RekisteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OpettajaID" Type="int" />
@@ -27,6 +27,8 @@
           <Property Name="LuokkaID" Type="int" />
           <Property Name="KirjattuID" Type="int" />
           <Property Name="KurssiRekisteriID" Type="int" />
+          <Property Name="KirjattuUlosID" Type="int" />
+          <Property Name="KurssiUlosID" Type="int" />
         </EntityType>
         <EntityType Name="Opettaja">
           <Key>
@@ -166,8 +168,8 @@
           <Key>
             <PropertyRef Name="RekisteriID" />
           </Key>
-          <Property Name="Kirjautuminen_sisään" Type="DateTime" Precision="0" />
-          <Property Name="Kirjautuminen_ulos" Type="DateTime" Precision="0" />
+          <Property Name="Kirjautuminen_sisään" Type="DateTime" Precision="3" />
+          <Property Name="Kirjautuminen_ulos" Type="DateTime" Precision="3" />
           <Property Name="Luokkanumero" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="RekisteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OpettajaID" Type="Int32" />
@@ -176,6 +178,8 @@
           <Property Name="LuokkaID" Type="Int32" />
           <Property Name="KirjattuID" Type="Int32" />
           <Property Name="KurssiRekisteriID" Type="Int32" />
+          <Property Name="KirjattuUlosID" Type="Int32" />
+          <Property Name="KurssiUlosID" Type="Int32" />
           <NavigationProperty Name="Kurssi" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Kurss__5070F446" FromRole="Läsnäolotiedot" ToRole="Kurssi" />
           <NavigationProperty Name="OpetusTila" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Luokk__4D94879B" FromRole="Läsnäolotiedot" ToRole="OpetusTila" />
           <NavigationProperty Name="Opettaja" Relationship="KurssiRekisteriModel.FK__Läsnäolot__Opett__534D60F1" FromRole="Läsnäolotiedot" ToRole="Opettaja" />
@@ -277,6 +281,8 @@
           <EntitySetMapping Name="Läsnäolotiedot">
             <EntityTypeMapping TypeName="KurssiRekisteriModel.Läsnäolotiedot">
               <MappingFragment StoreEntitySet="Läsnäolotiedot">
+                <ScalarProperty Name="KurssiUlosID" ColumnName="KurssiUlosID" />
+                <ScalarProperty Name="KirjattuUlosID" ColumnName="KirjattuUlosID" />
                 <ScalarProperty Name="KurssiRekisteriID" ColumnName="KurssiRekisteriID" />
                 <ScalarProperty Name="KirjattuID" ColumnName="KirjattuID" />
                 <ScalarProperty Name="LuokkaID" ColumnName="LuokkaID" />
