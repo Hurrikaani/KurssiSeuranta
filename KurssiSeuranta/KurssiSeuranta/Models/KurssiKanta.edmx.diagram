@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f952f3ba32844252b8f1e8548c1b3970" Name="Diagram1">
-        <EntityTypeShape EntityType="KurssiRekisteriModel.Kurssi" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="KurssiRekisteriModel.Kurssi" Width="1.5" PointX="0.75" PointY="5.625" />
         <EntityTypeShape EntityType="KurssiRekisteriModel.Läsnäolotiedot" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="KurssiRekisteriModel.Opettaja" Width="1.5" PointX="0.75" PointY="8.125" />
-        <EntityTypeShape EntityType="KurssiRekisteriModel.OpetusTila" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="KurssiRekisteriModel.Opiskelija" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="KurssiRekisteriModel.Opettaja" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="KurssiRekisteriModel.OpetusTila" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="KurssiRekisteriModel.Opiskelija" Width="1.5" PointX="0.75" PointY="8.125" />
         <AssociationConnector Association="KurssiRekisteriModel.FK__Läsnäolot__Kurss__5070F446" />
         <AssociationConnector Association="KurssiRekisteriModel.FK__Läsnäolot__Luokk__4D94879B" />
         <AssociationConnector Association="KurssiRekisteriModel.FK__Läsnäolot__Opett__534D60F1" />

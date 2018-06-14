@@ -28,8 +28,8 @@ namespace KurssiSeuranta.Controllers
                 foreach (Läsnäolotiedot läs in läsnäolotiedot)
                 {
                     LasnaolotietoViewModel view = new LasnaolotietoViewModel();
-                    view.Kirjautuminen_sisään = läs.Kirjautuminen_sisään.Value;
-                    view.Kirjautuminen_ulos = läs.Kirjautuminen_ulos.Value;
+                    view.Kirjautuminen_sisään = läs.Kirjautuminen_sisään.GetValueOrDefault();
+                    view.Kirjautuminen_ulos = läs.Kirjautuminen_ulos.GetValueOrDefault();
                     view.Luokkanumero = läs.Luokkanumero;
                     view.RekisteriID = läs.RekisteriID;
                     view.OpettajaID = läs.OpettajaID;
@@ -284,16 +284,42 @@ namespace KurssiSeuranta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Läsnäolotiedot läsnäolotiedot = db.Läsnäolotiedot.Find(id);
-            if (läsnäolotiedot == null)
+            Läsnäolotiedot läs = db.Läsnäolotiedot.Find(id);
+            if (läs == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.KurssiID = new SelectList(db.Kurssi, "KurssiID", "Kurssinimi", läsnäolotiedot.KurssiID);
-            ViewBag.LuokkaID = new SelectList(db.OpetusTila, "LuokkaID", "LuokanNimi", läsnäolotiedot.LuokkaID);
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", läsnäolotiedot.OpettajaID);
-            ViewBag.OpiskelijaID = new SelectList(db.Opiskelija, "OpiskelijaID", "Etunimi", läsnäolotiedot.OpiskelijaID);
-            return View(läsnäolotiedot);
+            LasnaolotietoViewModel view = new LasnaolotietoViewModel();
+            view.Kirjautuminen_sisään = läs.Kirjautuminen_sisään.Value;
+            view.Kirjautuminen_ulos = läs.Kirjautuminen_ulos.Value;
+            view.Luokkanumero = läs.Luokkanumero;
+            view.RekisteriID = läs.RekisteriID;
+            view.OpettajaID = läs.OpettajaID;
+            view.KurssiID = läs.KurssiID;
+            view.OpiskelijaID = läs.OpiskelijaID;
+            view.LuokkaID = läs.LuokkaID;
+
+            //Kurssitaulu
+            view.Kurssinimi = läs.Kurssi?.Kurssinimi;
+            view.Kurssikoodi = läs.Kurssi?.Kurssikoodi;
+
+            //opetustila taulu
+            view.LuokanNimi = läs.OpetusTila?.LuokanNimi;
+            view.LuokkaKoodi = läs.OpetusTila?.LuokkaKoodi;
+
+            //Opettaja taulu
+            // view.Etunimi = läs.Opettaja?.Etunimi;
+            //view.Sukunimi = läs.Opettaja?.Sukunimi;
+            //  view.Opettajanro = läs.Opettaja.Opettajanro;
+            view.OpettajaNimi = läs.Opettaja?.Etunimi + " " + läs.Opettaja?.Sukunimi;
+
+
+            //Opiskelija taulu
+            view.OpiskelijaNimi = läs.Opiskelija?.Etunimi + " " + läs.Opiskelija?.Sukunimi;
+
+
+
+            return View(view);
         }
 
         // POST: Läsnäolotieto/Edit/5
@@ -301,19 +327,62 @@ namespace KurssiSeuranta.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Kirjautuminen_sisään,Kirjautuminen_ulos,Luokkanumero,RekisteriID,OpettajaID,KurssiID,OpiskelijaID,LuokkaID")] Läsnäolotiedot läsnäolotiedot)
+        public ActionResult Edit(LasnaolotietoViewModel model)
+
+
         {
-            if (ModelState.IsValid)
+            Läsnäolotiedot view = db.Läsnäolotiedot.Find(model.RekisteriID);
+            view.Kirjautuminen_sisään = model.Kirjautuminen_sisään.Value;
+            view.Kirjautuminen_ulos = model.Kirjautuminen_ulos.Value;
+            view.Luokkanumero = model.Luokkanumero;
+            view.RekisteriID = model.RekisteriID;
+            view.OpettajaID = model.OpettajaID;
+            view.KurssiID = model.KurssiID;
+            view.OpiskelijaID = model.OpiskelijaID;
+            view.LuokkaID = model.LuokkaID;
+
+            //Kurssitaulu
+
+            int kurssiID = int.Parse(model.Kurssikoodi);
+            if (kurssiID > 0)
             {
-                db.Entry(läsnäolotiedot).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Kurssi kurs = db.Kurssi.Find(kurssiID);
+                view.KurssiID = kurs.KurssiID;
             }
-            ViewBag.KurssiID = new SelectList(db.Kurssi, "KurssiID", "Kurssinimi", läsnäolotiedot.KurssiID);
-            ViewBag.LuokkaID = new SelectList(db.OpetusTila, "LuokkaID", "LuokanNimi", läsnäolotiedot.LuokkaID);
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", läsnäolotiedot.OpettajaID);
-            ViewBag.OpiskelijaID = new SelectList(db.Opiskelija, "OpiskelijaID", "Etunimi", läsnäolotiedot.OpiskelijaID);
-            return View(läsnäolotiedot);
+
+
+           
+
+            //opetustila taulu
+
+
+            int luokkaID = int.Parse(model.LuokkaKoodi);
+            if (luokkaID > 0)
+            {
+                OpetusTila opet = db.OpetusTila.Find(luokkaID);
+                view.LuokkaID = opet.LuokkaID;
+            }
+
+
+
+
+            //Opettaja taulu
+            // view.Etunimi = läs.Opettaja?.Etunimi;
+            //view.Sukunimi = läs.Opettaja?.Sukunimi;
+            //  view.Opettajanro = läs.Opettaja.Opettajanro;
+            //view.OpettajaNimi = model.Opettaja?.Etunimi + " " + model.Opettaja?.Sukunimi;
+
+
+            //Opiskelija taulu
+
+            int opiskelijaID = int.Parse(model.Opiskelijanro);
+            if (opiskelijaID > 0)
+            {
+                Opiskelija opis = db.Opiskelija.Find(opiskelijaID);
+                view.OpiskelijaID = opis.OpiskelijaID;
+            }
+            db.SaveChanges();
+            return View("Index");
         }
 
         // GET: Läsnäolotieto/Delete/5

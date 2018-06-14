@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/05/2018 13:36:40
--- Generated from EDMX file: C:\Users\hurri\Source\Repos\KurssiSeuranta\KurssiSeuranta\KurssiSeuranta\Models\KurssiKanta.edmx
+-- Date Created: 06/14/2018 18:24:11
+-- Generated from EDMX file: C:\Users\h0k5\Source\Repos\KurssiSeuranta\KurssiSeuranta\KurssiSeuranta\Models\KurssiKanta.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -71,7 +71,11 @@ CREATE TABLE [dbo].[Läsnäolotiedot] (
     [OpettajaID] int  NULL,
     [KurssiID] int  NULL,
     [OpiskelijaID] int  NULL,
-    [LuokkaID] int  NULL
+    [LuokkaID] int  NULL,
+    [KirjattuID] int  NULL,
+    [KurssiRekisteriID] int  NULL,
+    [KirjattuUlosID] int  NULL,
+    [KurssiUlosID] int  NULL
 );
 GO
 
