@@ -37,6 +37,7 @@ namespace KurssiSeuranta.Controllers
                     view.OpiskelijaID = läs.OpiskelijaID;
                     view.LuokkaID = läs.LuokkaID;
 
+                    //kkkk
                     //Kurssitaulu
                     view.Kurssinimi = läs.Kurssi?.Kurssinimi;
                     view.Kurssikoodi = läs.Kurssi?.Kurssikoodi;
