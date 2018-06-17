@@ -1,14 +1,35 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<div class="container-fluid">
 
-<div class="jumbotron">
-    <h1>KurssiSeuranta</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="/Läsnäolotieto" class="btn btn-primary btn-lg">Läsnäolotiedot&raquo;</a></p>
-    <p><a href="/Opettajat" class="btn btn-primary btn-lg">Opettaja&raquo;</a></p>
-    <p><a href="/Opiskelijat" class="btn btn-primary btn-lg">Oppilas&raquo;</a></p>
-    <p><a href="/Kurssit" class="btn btn-primary btn-lg">Kurssi&raquo;</a></p>
-    <p><a href="/OpetusTilat" class="btn btn-primary btn-lg">OpetusTila&raquo;</a></p>
+    <div id="otsikko" style="margin-top: 70px;">
+        <h1>KurssiSeuranta</h1>
+    </div>
+
+    <div class="row" style="margin-top: 100px;">
+
+        <div class=" col-md-12">
+            <p><a href="/Läsnäolotieto" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-list-alt"></span>Läsnäolotiedot&raquo;</a></p>
+        </div>
+
+        <div class="col-md-12">
+            <p><a href="/Opettajat" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span>Opettaja&raquo;</a></p>
+        </div>
+
+        <div class="col-md-12">
+            <p><a href="/Opiskelijat" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span>Oppilas&raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 40px;">
+
+        <div class="col-md-12">
+            <p><a href="/Kurssit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-book"></span>Kurssi&raquo;</a></p>
+        </div>
+
+        <div class="col-md-12">
+            <p><a href="/OpetusTilat" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span>OpetusTila&raquo;</a></p>
+        </div>
+
+    </div>
 </div>
 
+<!-- <span class="glyphicon-glyphicon-home"></span> -->

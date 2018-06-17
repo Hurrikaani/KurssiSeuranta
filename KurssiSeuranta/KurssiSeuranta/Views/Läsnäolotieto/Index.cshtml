@@ -6,129 +6,130 @@
 @section scripts {
 
     @Scripts.Render("~/bundles/jqueryval")
+<div class="container-fluid">
+ 
+        <script type="text/javascript">
 
-    <script type="text/javascript">
+            var LuokkaKoodiModel = (function () {
 
-        var LuokkaKoodiModel = (function () {
+                function LuokkaKoodiModel() {
 
-            function LuokkaKoodiModel() {
+                }
 
-            }
+                return LuokkaKoodiModel;
 
-            return LuokkaKoodiModel;
+            }());
 
-        }());
+            function initKurssiTallennus() {
 
-        function initKurssiTallennus() {
+                $("#TallennaKurssiButton").click(function () {
 
-            $("#TallennaKurssiButton").click(function () {
+                    //alert("Toimii!");
 
-                //alert("Toimii!");
+                    var kurssiKoodi = $("#KurssiKoodi").val();
 
-                var kurssiKoodi = $("#KurssiKoodi").val();
+                    var oppilasKoodi = $("#OppilasKoodi").val();
 
-                var oppilasKoodi = $("#OppilasKoodi").val();
+                    alert("L: " + kurssiKoodi + ", A:" + oppilasKoodi);
 
-                alert("L: " + kurssiKoodi + ", A:" + oppilasKoodi);
+                    //määritetään muuttuja:
 
-                //määritetään muuttuja:
+                    var data = new LuokkaKoodiModel();
 
-                var data = new LuokkaKoodiModel();
+                    data.KurssiKoodi = kurssiKoodi;
 
-                data.KurssiKoodi = kurssiKoodi;
+                    data.OppilasKoodi = oppilasKoodi;
 
-                data.OppilasKoodi = oppilasKoodi;
+                    //lähetetään JSON-muotoista dataa palvelimelle
 
-                //lähetetään JSON-muotoista dataa palvelimelle
+                    $.ajax({
 
-                $.ajax({
+                        type: "POST",
 
-                    type: "POST",
+                        url: "/lasnaolotieto/TallennaKurssi",
 
-                    url: "/lasnaolotieto/TallennaKurssi",
+                        data: JSON.stringify(data),
 
-                    data: JSON.stringify(data),
+                        contentType: "application/json",
 
-                    contentType: "application/json",
+                        success: function (data) {
 
-                    success: function (data) {
+                            if (data.success === true) {
 
-                        if (data.success === true) {
+                                alert("Asset successfully assigned.");
 
-                            alert("Asset successfully assigned.");
+                            }
 
-                        }
+                            else {
 
-                        else {
+                                alert("There was an error: " + data.error);
 
-                            alert("There was an error: " + data.error);
+                            }
 
-                        }
+                        },
 
-                    },
+                        dataType: "json"
 
-                    dataType: "json"
+                    });
 
                 });
 
-            });
+            }
 
-        }
+        </script>
 
-    </script>
+        <script>
 
-    <script>
+            $(function () {
 
-    $(function () {
+                initKurssiTallennus();
 
-    initKurssiTallennus();
+            })
 
-    })
+        </script>
 
-    </script>
-
-}
+    }
 
 
 
-<h2>Index</h2>
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Luokkanumero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kurssinimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kurssikoodi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LuokanNimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LuokkaKoodi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpiskelijaNimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpettajaNimi)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Luo uusi", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Luokkanumero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kurssinimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kurssikoodi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuokanNimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuokkaKoodi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpiskelijaNimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpettajaNimi)
+            </th>
+            <th></th>
+        </tr>
 
-    @foreach (var item in Model)
+        @foreach (var item in Model)
     {
         <tr>
             <td>
@@ -159,11 +160,13 @@
                 @Html.DisplayFor(modelItem => item.OpettajaNimi)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.RekisteriID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RekisteriID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RekisteriID })
+                @Html.ActionLink("Muokkaa", "Edit", new { id = item.RekisteriID }) |
+                @Html.ActionLink("Tiedot", "Details", new { id = item.RekisteriID }) |
+                @Html.ActionLink("Poista", "Delete", new { id = item.RekisteriID })
             </td>
         </tr>
-    }
+}
 
-</table>
+    </table>
+    </div>
+  

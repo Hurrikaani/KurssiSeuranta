@@ -3,49 +3,52 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 70px;">
+        <h1>Index</h1>
+        </div>
+        <p>
+            @Html.ActionLink("Luo uusi", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Etunimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sukunimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Opiskelijanro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tutkinto)
+                </th>
+                <th></th>
+            </tr>
 
-<h2>Index</h2>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Etunimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sukunimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Opiskelijanro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutkinto)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Muokkaa", "Edit", new { id = item.OpiskelijaID }) |
+                        @Html.ActionLink("Tiedot", "Details", new { id = item.OpiskelijaID }) |
+                        @Html.ActionLink("Poista", "Delete", new { id = item.OpiskelijaID })
+                    </td>
+                </tr>
+            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Opiskelijanro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tutkinto)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sukunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Opiskelijanro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tutkinto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OpiskelijaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OpiskelijaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OpiskelijaID })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>

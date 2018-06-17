@@ -3,43 +3,47 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 70px;">
+    <h1>Opetttajat</h1>
+        </div>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Luo uusi", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Etunimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sukunimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opettajanro)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Opettajanro)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sukunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opettajanro)
+                </td>
+                <td>
+                    @Html.ActionLink("Muokkaa", "Edit", new { id = item.OpettajaID }) |
+                    @Html.ActionLink("Tiedot", "Details", new { id = item.OpettajaID }) |
+                    @Html.ActionLink("Poista", "Delete", new { id = item.OpettajaID })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sukunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Opettajanro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OpettajaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OpettajaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OpettajaID })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+    </div>
