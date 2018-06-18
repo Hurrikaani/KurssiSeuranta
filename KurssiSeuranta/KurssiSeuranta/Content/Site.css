@@ -1,11 +1,14 @@
 ﻿body {
-    /*background-image: url(POINTlogo.jpg);*/
-
+    background-image: url(POINTlogo.jpg);
     background-size: 650px 400px;
     background-repeat: no-repeat;
+
+    /*background-color: lightcyan;*/
+
     background-position: 50% 70%;
     padding-top: 50px;
     padding-bottom: 20px;
+
 }
 
 
