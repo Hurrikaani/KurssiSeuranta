@@ -4,77 +4,78 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="container-fluid">
+    <h1>Oletko varma, että haluat poistaa tämän tiedon?</h1>
+    <div>
+        <h4>Läsnäolotiedot</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
+            </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Läsnäolotiedot</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Kirjautuminen_sisään)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kirjautuminen_sisään)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Kirjautuminen_ulos)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kirjautuminen_ulos)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Luokkanumero)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Luokkanumero)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Luokkanumero)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Luokkanumero)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Kurssi.Kurssinimi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kurssi.Kurssinimi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Kurssi.Kurssinimi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kurssi.Kurssinimi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OpetusTila.LuokanNimi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OpetusTila.LuokanNimi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OpetusTila.LuokanNimi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OpetusTila.LuokanNimi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Opettaja.Etunimi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opettaja.Etunimi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Opiskelija.Etunimi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opiskelija.Etunimi)
-        </dd>
+        </dl>
 
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </div>

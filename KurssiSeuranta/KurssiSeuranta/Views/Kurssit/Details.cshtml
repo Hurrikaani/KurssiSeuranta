@@ -4,31 +4,34 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Kurssi</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kurssinimi)
-        </dt>
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 100px;">
+        <h1>Kurssi</h1>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Kurssinimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kurssinimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Kurssinimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kurssikoodi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Kurssikoodi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kurssikoodi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Kurssikoodi)
+            </dd>
 
-    </dl>
+        </dl>
+        <div style="margin-top: 50px;">
+            <p>
+                @Html.ActionLink("Muokkaa", "Edit", new { id = Model.KurssiID }) |
+                @Html.ActionLink("Palaa listaan", "Index")
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.KurssiID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -4,71 +4,74 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Läsnäolotiedot</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
-        </dt>
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 100px;">
+        <h1>Läsnäolotiedot</h1>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Kirjautuminen_sisään)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kirjautuminen_sisään)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Kirjautuminen_sisään)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Kirjautuminen_ulos)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kirjautuminen_ulos)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Kirjautuminen_ulos)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Luokkanumero)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Luokkanumero)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Luokkanumero)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Luokkanumero)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kurssi.Kurssinimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Kurssi.Kurssinimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kurssi.Kurssinimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Kurssi.Kurssinimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OpetusTila.LuokanNimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.OpetusTila.LuokanNimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OpetusTila.LuokanNimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.OpetusTila.LuokanNimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opettaja.Etunimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Opettaja.Etunimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opiskelija.Etunimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opiskelija.Etunimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Opiskelija.Etunimi)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <div style="margin-top: 50px;">
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.RekisteriID }) |
+        @Html.ActionLink("Palaa listaan", "Index")
+    </p>
+        </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RekisteriID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

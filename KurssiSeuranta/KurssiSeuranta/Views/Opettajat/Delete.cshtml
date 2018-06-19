@@ -4,45 +4,46 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 100px;">
+        <h1>Haluatko varmasti poistaa tämän opettajan tiedot?</h1>
+        <h2>Opettaja</h2>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Etunimi)
+                </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Opettaja</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Etunimi)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Etunimi)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sukunimi)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Sukunimi)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sukunimi)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Opettajanro)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opettajanro)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Opettajanro)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opettajanro)
-        </dd>
+            </dl>
 
-    </dl>
+            @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+            <div class="form-actions danger" style="margin-top: 50px;">
+                <input type="submit" value="Poista" class="btn btn-default" /> |
+                @Html.ActionLink("Palaa listaan", "Index")
+            </div>
     }
-</div>
+        </div>
+        </div>

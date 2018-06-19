@@ -4,8 +4,8 @@
     ViewBag.Title = "Create";
 }
 <div class="container-fluid">
-    <div id="otsikko" style="margin-top: 50px;">
-        <h2>Luo opiskelijatieto</h2>
+    <div id="otsikko" style="margin-top: 100px;">
+        <h1>Luo opiskelijatieto</h1>
     </div>
 
     @using (Html.BeginForm())
@@ -57,14 +57,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Luo" class="btn btn-default" />
                 </div>
             </div>
         </div>
     }
 
-    <div style="margin-top: 480px;">
-        @Html.ActionLink("Etusivulle", "Index")
+    <div style="margin-top: 50px;">
+        @Html.ActionLink("Palaa listaan", "Index")
     </div>
 
     @section Scripts {

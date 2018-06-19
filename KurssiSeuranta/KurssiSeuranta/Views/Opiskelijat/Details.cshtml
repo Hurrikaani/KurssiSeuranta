@@ -4,47 +4,49 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Opiskelija</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </dt>
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 100px;">
+        <h1>Opiskelija</h1>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Etunimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Etunimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Etunimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sukunimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sukunimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Sukunimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opiskelijanro)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Opiskelijanro)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opiskelijanro)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Opiskelijanro)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tutkinto)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tutkinto)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tutkinto)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Tutkinto)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OpiskelijaID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+        <div style="margin-top: 50px;">
+            <p>
+                @Html.ActionLink("Muokkaa", "Edit", new { id = Model.OpiskelijaID }) |
+                @Html.ActionLink("Takaisin listaan", "Index")
+            </p>
+        </div>
+        </div>

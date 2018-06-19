@@ -4,31 +4,34 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>OpetusTila</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LuokanNimi)
-        </dt>
+<div class="container-fluid">
+    <div id="otsikko" style="margin-top: 100px;">
+        <h1>OpetusTila</h1>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LuokanNimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LuokanNimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LuokanNimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LuokkaKoodi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LuokkaKoodi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LuokkaKoodi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LuokkaKoodi)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LuokkaID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <div style="margin-top: 50px;">
+        <p>
+            @Html.ActionLink("Muokkaa", "Edit", new { id = Model.LuokkaID }) |
+            @Html.ActionLink("Palaa listaan", "Index")
+        </p>
+        </div>
+    </div>
