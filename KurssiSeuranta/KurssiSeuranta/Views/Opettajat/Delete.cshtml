@@ -41,8 +41,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions danger" style="margin-top: 50px;">
-                <input type="submit" value="Poista" class="btn btn-default" /> |
-                @Html.ActionLink("Palaa listaan", "Index")
+                <input type="submit" value="Poista" class="btn btn-danger" /> 
+                @Html.ActionLink("Palaa listaan", "Index", null, new { @class = "btn btn-info" })
             </div>
     }
         </div>

@@ -232,6 +232,7 @@
     <Content Include="Models\KurssiKanta.edmx.diagram">
       <DependentUpon>KurssiKanta.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Kurssiseuranta - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
