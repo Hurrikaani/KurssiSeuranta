@@ -88,7 +88,7 @@ namespace KurssiSeuranta.Controllers
             Opiskelija view = new Opiskelija();
             view.OpiskelijaID = model.OpiskelijaID;
             view.Etunimi = model.Etunimi;
-            view.Sukunimi = model.Etunimi;
+            view.Sukunimi = model.Sukunimi;
             view.Opiskelijanro = model.Opiskelijanro;
             view.Tutkinto = model.Tutkinto;
             db.Opiskelija.Add(view);
@@ -119,7 +119,7 @@ namespace KurssiSeuranta.Controllers
             OpiskelijaViewModel view = new OpiskelijaViewModel();
             view.OpiskelijaID = op.OpiskelijaID;
             view.Etunimi = op.Etunimi;
-            view.Sukunimi = op.Etunimi;
+            view.Sukunimi = op.Sukunimi;
             view.Opiskelijanro = op.Opiskelijanro;
             view.Tutkinto = op.Tutkinto;
 
@@ -163,7 +163,7 @@ namespace KurssiSeuranta.Controllers
 
             OpiskelijaViewModel view = new OpiskelijaViewModel();
             view.OpiskelijaID = op.OpiskelijaID;
-            view.Etunimi = op.Sukunimi;
+            view.Etunimi = op.Etunimi;
             view.Sukunimi = op.Sukunimi;
             view.Opiskelijanro = op.Opiskelijanro;
             view.Tutkinto = op.Tutkinto;

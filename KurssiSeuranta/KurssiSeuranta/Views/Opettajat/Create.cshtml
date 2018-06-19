@@ -1,4 +1,4 @@
-﻿@model KurssiSeuranta.ViewModels.OpiskelijaViewModel
+﻿@model KurssiSeuranta.Models.Opettaja
 
 @{
     ViewBag.Title = "Create";
@@ -32,28 +32,13 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Opiskelijanro, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Opettajanro, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Opiskelijanro, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Opiskelijanro, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Opettajanro, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Opettajanro, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            @*<div class="form-group">
-                    @Html.LabelFor(model => model.OpiskelijaID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.OpiskelijaID, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.OpiskelijaID, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Tutkinto, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Tutkinto, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Tutkinto, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
